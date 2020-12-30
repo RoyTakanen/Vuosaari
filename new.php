@@ -29,18 +29,31 @@
     <title>New url has been generated - Vuosaari</title>
     <link rel="stylesheet" href="/main.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script type="text/javascript">
+       function copyText(input) {
+         let text = document.getElementById(input);
+
+         text.select();
+         text.setSelectionRange(0, 99999);
+
+         document.execCommand("copy");
+
+         return copyText.value;
+       }
+     </script>
   </head>
   <body>
     <h1>URL shortening service - Vuosaari</h1>
     <?php if ($error) { ?>
-      <div class="error">
+      <div class="centerverhor">
         <?php echo $error; ?>
       </div>
     <?php } else { ?>
-      <form>
+      <form class="centerverhor">
         <h2>Your url has been generated</h2>
         <center>
-          <input type="url" value="<?php echo $scheme . $domain . '/?u=' . $id; ?>" disabled>
+          <input type="url" id="urlinput" value="<?php echo $scheme . $domain . '/?u=' . $id; ?>">
+          <button class="button" type="button" onclick="copyText('urlinput');">Copy</button>
         </center>
       </form>
     <?php } ?>

@@ -23,7 +23,7 @@ input[type=url] {
   font-size:14px;
 }
 
-input[type=submit] {
+.button {
   color: #1D9AF2;
   background-color: #292D3E;
   border: 1px solid #1D9AF2;
@@ -35,12 +35,12 @@ input[type=submit] {
   transition: all 0.2s ease-in-out;
 }
 
-input[type=submit]:hover {
+.button:hover {
   box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
   transform: translateX(-3px);
 }
 
-.error {
+.centerverhor {
   position: absolute;
   left: 50%;
   top: 50%;
