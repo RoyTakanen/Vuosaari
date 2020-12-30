@@ -10,7 +10,7 @@
       die("Connection to database failed: " . $conn->connect_error . ". Please contact admin.");
     }
 
-    $id = newUrl($url, $conn);
+    $id = newUrl($url, $_SERVER['REMOTE_ADDR'], $conn);
 
     $domain = $_SERVER['SERVER_NAME'];
     if(isset($_SERVER['HTTPS'])) {

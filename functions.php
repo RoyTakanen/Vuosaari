@@ -11,12 +11,13 @@
       return $randomString;
   }
 
-  function newUrl($url, $conn) {
-    $stmt = $conn->prepare("INSERT INTO vuosaari_urls (id, url) VALUES (?, ?)");
-    $stmt->bind_param("ss", $id, $url);
+  function newUrl($url, $ip, $conn) {
+    $stmt = $conn->prepare("INSERT INTO vuosaari_urls (id, url, ip) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $id, $url, $ip);
 
     $id = generateRandomString();
-    $url = $_GET["url"];
+    $url = $url;
+    $ip = $ip;
     $stmt->execute();
 
     $stmt->close();
