@@ -1,21 +1,26 @@
 <?php
   require 'functions.php';
 
-  $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
+  $url = $_GET["url"];
 
-  if ($conn->connect_error) {
-    die("Connection to database failed: " . $conn->connect_error . ". Please contact admin.");
-  }
+  if (filter_var($url, FILTER_VALIDATE_URL) !== false) {
+    $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
 
-  $id = newUrl($_GET["url"], $conn);
+    if ($conn->connect_error) {
+      die("Connection to database failed: " . $conn->connect_error . ". Please contact admin.");
+    }
 
-  $domain = $_SERVER['SERVER_NAME'];
-  if(isset($_SERVER['HTTPS'])) {
-    $scheme = 'https://';
+    $id = newUrl($url, $conn);
+
+    $domain = $_SERVER['SERVER_NAME'];
+    if(isset($_SERVER['HTTPS'])) {
+      $scheme = 'https://';
+    } else {
+      $scheme = 'http://';
+    }
   } else {
-    $scheme = 'http://';
+    $error = "Please enter a valid URL.";
   }
-
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -27,11 +32,17 @@
   </head>
   <body>
     <h1>URL shortening service - Vuosaari</h1>
-    <form method="get">
-      <h2>Your url has been generated</h2>
-      <center>
-        <input type="url" value="<?php echo $scheme . $domain . '/?u=' . $id; ?>" disabled>
-      </center>
-    </form>
+    <?php if ($error) { ?>
+      <div class="error">
+        <?php echo $error; ?>
+      </div>
+    <?php } else { ?>
+      <form>
+        <h2>Your url has been generated</h2>
+        <center>
+          <input type="url" value="<?php echo $scheme . $domain . '/?u=' . $id; ?>" disabled>
+        </center>
+      </form>
+    <?php } ?>
   </body>
 </html>
