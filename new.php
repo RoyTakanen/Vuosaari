@@ -43,7 +43,13 @@
      </script>
   </head>
   <body>
-    <h1>URL shortening service - Vuosaari</h1>
+    <header class="wave">
+      <br>
+      <h1 style="display: inline-block;">URL shortening service</h1>
+      <strong><i>running on Vuosaari</i></strong>
+      <br>
+      <a href="/">New</a>
+    </header>
     <?php if ($error) { ?>
       <div class="centerverhor">
         <?php echo $error; ?>

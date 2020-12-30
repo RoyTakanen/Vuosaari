@@ -1,16 +1,12 @@
+html {
+  margin: 0;
+}
+
 body {
   margin: 0;
   font-family: helvetica;
   background-color: #13172c;
   color: white;
-}
-
-form {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 }
 
 input[type=url] {
@@ -21,6 +17,55 @@ input[type=url] {
   padding: 0 15px;
   height:32px;
   font-size:14px;
+}
+
+header {
+  background-color: #79B791;
+}
+
+header a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px 13px;
+  text-decoration: none;
+  font-size: 17px;
+  border-bottom: 3px solid transparent;
+  transition: 0.4s;
+}
+
+header a:hover {
+  border-bottom: 3px solid red;
+}
+
+.wave{
+  height: 150px;
+  position: relative;
+}
+.wave::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-repeat: repeat;
+  height: 10px;
+  background-size: 20px 20px;
+  background-image:
+    radial-gradient(circle at 10px -5px, transparent 12px, #13172c 13px);
+}
+.wave::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-repeat: repeat;
+  height: 15px;
+  background-size: 40px 20px;
+  background-image:
+    radial-gradient(circle at 10px 15px, #13172c 12px, transparent 13px);
 }
 
 .button {

@@ -24,7 +24,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
       </head>
       <body>
-        <h1>URL shortening service - Vuosaari</h1>
+        <header class="wave">
+          <br>
+          <h1 style="display: inline-block;">URL shortening service</h1>
+          <strong><i>running on Vuosaari</i></strong>
+          <br>
+          <a href="/">New</a>
+        </header>
         <form action="/new.php" class="centerverhor" method="get">
           <input type="url" name="url" placeholder="Enter your url...">
           <input type="submit" class="button" value="Create">
