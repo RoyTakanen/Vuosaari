@@ -34,11 +34,17 @@
             <a href="/docs.php">Docs</a>
           </nav>
         </header>
-        <form action="/api/new.php" class="centerverhor" method="get">
-          <input type="url" name="url" placeholder="Enter your url...">
-          <input type="hidden" name="info" value="1">
-          <input type="submit" class="button" value="Create">
-        </form>
+
+        <section>
+          <h2>Create new url</h2>
+          <p>
+            You have to send GET-request to URL <code>/api/new.php</code> with parameter <code>url</code> which contains shorten url in valid format. If the url already exists old id will be used.
+          </p>
+          <h2>View url info</h2>
+          <p>
+            When you create new url you can add GET-parameter <code>info</code> with value 1. This redirects you to url info page.
+          </p>
+        </section>
       </body>
     </html>
     <?php

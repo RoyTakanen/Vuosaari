@@ -1,5 +1,5 @@
 <?php
-  require 'config.php';
+  require __DIR__ . '/config.php';
 
   function generateRandomString($length = 4) {
       $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -35,4 +35,30 @@
     $result = $stmt->get_result();
     $data = $result->fetch_assoc();
     return $data["url"];
+  }
+
+  function getIdByUrl($url, $conn) {
+    $stmt = $conn->prepare("SELECT id FROM vuosaari_urls WHERE url=?");
+    $stmt->bind_param("s", $url);
+
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $data = $result->fetch_assoc();
+    return $data["id"];
+  }
+
+  function urlAlreadyExists($url, $conn) {
+    $stmt = $conn->prepare("SELECT id FROM vuosaari_urls WHERE url=?");
+    $stmt->bind_param("s", $url);
+
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $data = $result->fetch_assoc();
+
+    if (isset($data["id"])) {
+      return True;
+    }
+    return False;
   }

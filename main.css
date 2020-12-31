@@ -23,7 +23,7 @@ header {
   background-color: #79B791;
 }
 
-header a {
+nav a {
   float: left;
   display: block;
   color: #f2f2f2;
@@ -35,11 +35,22 @@ header a {
   transition: 0.4s;
 }
 
-header a:hover {
+nav a:hover {
   border-bottom: 3px solid red;
 }
 
-.wave{
+a {
+  text-decoration: underline;
+  color: white;
+}
+
+section {
+  max-width: 60%;
+  margin-left:20%;
+  margin-top: 1%;
+}
+
+.wave {
   height: 150px;
   position: relative;
 }
